@@ -45,29 +45,40 @@ class SLL:
         print("Node inserted")
 
     # insert node at a specific position in the linked list
-    #def insertingPosition(self, newNode, position):
+    def insertPosition(self, newNode, position):
         # checking if the list is empty or not
-        #if self.head is None:
+        if self.head is None:
             # if the list is empty then we insert the new node
             # as the first node in the list
-        #    self.head = newNode
+            self.head = newNode
+        # if the user chooses position 0 then
+        # we insert the node into the first place
+        # and we exit out of the loop
+        elif position == 0:
+            firstNode = newNode
+            firstNode.next = self.head
+            self.head = firstNode
         # if the list is not empty then we move to the specified 
         # position and insert the node there by shifting the 
-        # next node by one position each
-        #else:
-        #    count = 0
-        #    positionNode = self.head
-            # moving to the position one less than the given position
-        #    while count is not position - 1:
-        #        positionNode = positionNode.next
-        #        count = count + 1
-        #   print(positionNode.data)
-        #    newNode.next = positionNode.next
-        #    positionNode.next = newNode
-            # shifting and inserting node
-            # newNode.next = positionNode.next.next
-        #    positionNode = newNode
-        #print("Node inserted")
+        # node present there by one position each
+        else:
+            count = 0
+            currentNode = self.head
+            while True:
+                # checking if we have reached the specified 
+                # position and inserting the node there and
+                # breaking out of the loop
+                if count == position:
+                    previousNode.next = newNode
+                    newNode.next = currentNode
+                    break
+                # if we haven't reached the specified position
+                # we move ahead in the list to the next node
+                # and increase count by one
+                previousNode = currentNode
+                currentNode = currentNode.next
+                count = count + 1
+            print("Node inserted")
 
     # delete node from the end of the list
     def deleteEnd(self):
@@ -77,10 +88,12 @@ class SLL:
         # if the list is not empty we move to the last node
         # and delete it
         lastNode = self.head
-        while lastNode.next is not None:
+        while lastNode.next.next is not None:
             lastNode = lastNode.next
+        temp = lastNode.next
+        lastNode.next = None
         print("Deleted", lastNode.data)
-        del lastNode
+        del temp
 
     # delete node from the beginning of the list
     def deleteBeginning(self):
@@ -102,15 +115,25 @@ class SLL:
         # if the list is not empty we move to the specified 
         # position and shift the nodes and delete the
         # node present on that position
-        positionNode = self.head
+        currentNode = self.head
         count = 0
-        while count is not position - 1:
-            positionNode = positionNode.next
+        while True:
+            # if the position is the first one then we assign
+            # the head position to the next node
+            if position == 0:
+                self.head = currentNode.next
+                break
+            # if we reach the specified position then we assign
+            # the position of the node to be deleted to the next 
+            # node in the list
+            elif count == position:
+                previousNode.next = currentNode.next
+                break
+            previousNode = currentNode
+            currentNode = currentNode.next
             count = count + 1
-        temp = positionNode.next
-        positionNode.next = temp.next
-        print("Deleted", temp.data)
-        del temp
+        print("Deleted", currentNode.data)
+        del currentNode
 
     # printing the linked list
     def printList(self):
@@ -164,7 +187,7 @@ def main():
             # insert at a specified position
             elif choice1 == 3:
                 position = int(input("Enter the position: "))
-                sll.insertingPosition(newNode, position)
+                sll.insertPosition(newNode, position)
 
         # delete a node
         elif choice == 2:
