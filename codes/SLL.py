@@ -1,3 +1,5 @@
+# !/usr/bin/python3
+
 # Singly Linked List implementation in Python
 
 # Node class
@@ -135,9 +137,32 @@ class SLL:
         print("Deleted", currentNode.data)
         del currentNode
 
+    # reversing the linked list
+    def reverse(self):
+        # checking if the list is empty or not
+        if self.head is None:
+            # we print that the list is empty and exit the function
+            print("The list is empty")
+            return
+        # else we start reversing the list
+        else:
+            currentNode = self.head
+            previousNode = None
+            nextNode = None
+            # we change the positions of the nodes as we go from head to 
+            # the last node in the list and make the last node 
+            # head of the list 
+            while currentNode is not None:
+                nextNode = currentNode.next
+                currentNode.next = previousNode
+                previousNode = currentNode
+                currentNode = nextNode
+            self.head = previousNode
+            print("The list has been reversed")
+
     # printing the linked list
     def printList(self):
-        # checking of the list is empty or not
+        # checking if the list is empty or not
         if self.head is None:
             # if the list is empty then we return to the main menu
             print("The list is empty")
@@ -156,7 +181,8 @@ def printMenu():
     print("\n1. Insert into the linked list\n"+
             "2. Delete node from the linked list\n"+
             "3. View the linked list\n"+
-            "4. Exit")
+            "4. Reverse the linked list\n"+
+            "5. Exit")
 
 # main function to run the code
 def main():
@@ -213,8 +239,12 @@ def main():
         elif choice == 3:
             sll.printList()
 
-        # exit
+        # reverse the linked list
         elif choice == 4:
+            sll.reverse()
+
+        # exit
+        elif choice == 5:
             exit = True
 
 if __name__ == "__main__":
