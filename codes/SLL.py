@@ -184,7 +184,7 @@ def printMenu():
             "4. Reverse the linked list\n"+
             "5. Exit")
 
-# main function to run the code
+# Main function to enable the functionality of the code
 def main():
     print("Singly Linked List implementation in Python")
     sll = SLL()
