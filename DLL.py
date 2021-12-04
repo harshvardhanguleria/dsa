@@ -18,7 +18,48 @@ class DLL:
 
     # insert node at the end of the list
     def insertEnd(self, newNode):
-        pass
+        if self.node is None:
+            self.head = newNode
+        else:
+            lastNode = self.head
+            while lastNode.next is not None:
+                lastNode = lastNode.next
+            lastNode.next = newNode
+            newNode.prev = lastNode
+        print("Node inserted")
+    
+    # insert node at the beginning of the list
+    def insertBeginning(self, newNode):
+        if self.head is None:
+            self.head = newNode
+        else:
+            firstNode = newNode
+            firstNode.next = self.head
+            self.head.prev = firstNode
+        print("Node inserted")
+    
+    # insert node at a specific position in the list
+    def insertAtPosition(self, newNode, position):
+        if self.head is None:
+            self.head = newNode
+        elif position == 0:
+            firstNode = newNode
+            firstNode.next = self.head
+            self.head.prev = firstNode
+            self.head = firstNode
+        else:
+            count = 0
+            currentNode = self.head
+            while True:
+                if count == position:
+                    previousNode.next = newNode
+                    newNode.next = currentNode
+                    currentNode.prev = newNode
+                    break
+                previousNode = currentNode
+                currentNode = currentNode.next
+                count = count + 1
+        print("Node inserted")
 
 # Function to print action menu
 def printMenu():

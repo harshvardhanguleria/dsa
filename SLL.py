@@ -80,7 +80,7 @@ class SLL:
                 previousNode = currentNode
                 currentNode = currentNode.next
                 count = count + 1
-            print("Node inserted")
+        print("Node inserted")
 
     # delete node from the end of the list
     def deleteEnd(self):
