@@ -16,6 +16,10 @@ class DLL:
     def __init(self):
         self.head = None
 
+    # insert node at the end of the list
+    def insertEnd(self, newNode):
+        pass
+
 # Function to print action menu
 def printMenu():
     print("\n1. Insert into the linked list\n"+
@@ -26,7 +30,7 @@ def printMenu():
 
 # Main function to enable the functionality of the code
 def main():
-    pass
+    printMenu()
 
 if __name__ == "__main__":
     main()
