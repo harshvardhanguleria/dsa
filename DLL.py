@@ -60,6 +60,28 @@ class DLL:
                 currentNode = currentNode.next
                 count = count + 1
         print("Node inserted")
+    
+    # delete node from the end of the list
+    def deleteEnd(self):
+        if self.head is None:
+            return
+        lastNode = self.head
+        while lastNode.next.next is not None:
+            lastNode = lastNode.next
+        temp = lastNode.next
+        lastNode.next = None
+        print("Deleted", lastNode.data)
+        del temp
+
+    # delete node from the beginning of the list
+    def deleteBeginning(self):
+        if self.head is None:
+            return
+        firstNode = self.head
+        self.head = firstNode.next
+        self.head.prev = None
+        print("Deleted", firstNode.data)
+        del firstNode
 
 # Function to print action menu
 def printMenu():
