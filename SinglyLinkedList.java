@@ -17,7 +17,7 @@ class SLL {
         this.head = null;
     }
 
-    // inserting node at the end of the list
+    // inserting a node at the end of the list
     public void insertEnd(Node newNode) {
         Node lastNode;
         if (this.head == null) 
@@ -31,20 +31,18 @@ class SLL {
         System.out.println("\nNode inserted");
     }   
 
-    // inserting node at the beginning of the list
+    // inserting a node at the beginning of the list
     public void insertBeginning(Node newNode) {
-        Node firstNode;
         if (this.head == null)
             this.head = newNode;
         else {
-            firstNode = newNode;
-            firstNode.next = this.head;
-            this.head = firstNode;
+            newNode.next = this.head;
+            this.head = newNode;
         }
         System.out.println("\nNode inserted");
     }
 
-    // inserting node at a specific position in the list
+    // inserting a node at a specific position in the list
     public void insertPosition(Node newNode, int position) {
         int count = 0;
         Node firstNode = null; 
