@@ -48,7 +48,41 @@ class DLL {
 
     // Inserting a node at a specific position in the list
     public void insertPosition(Node newNode, int position) {
-        
+        int count = 0;
+        Node currentNode = null;
+        Node previousNode = null;
+        if (this.head == null)
+            this.head = newNode;
+        else if (position == 0) {
+            newNode.next = this.head;
+            this.head = newNode;
+        } else {
+            currentNode = this.head;
+            while (true) {
+                if (count == position) {
+                    previousNode.next = newNode;
+                    newNode.next = currentNode;
+                    break;
+                }
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+                count = count + 1;
+            }
+        }
+    }
+
+    // Deleting a node from the end of the list
+    public void deleteEnd() {
+        Node lastNode;
+        if (this.head == null) {
+            System.out.println("\nThe list is empty.");
+            return;
+        }
+        lastNode = this.head;
+        while (lastNode.next.next != null)
+            lastNode = lastNode.next;
+        System.out.println("\nDeleted "+ lastNode.data);
+        lastNode.next = null;
     }
 }
 

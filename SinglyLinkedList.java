@@ -45,15 +45,13 @@ class SLL {
     // inserting a node at a specific position in the list
     public void insertPosition(Node newNode, int position) {
         int count = 0;
-        Node firstNode = null; 
         Node currentNode = null; 
         Node previousNode = null;
         if (this.head == null) 
             this.head = newNode;
         else if (position == 0) {
-            firstNode = newNode;
-            firstNode.next = this.head;
-            this.head = firstNode;
+            newNode.next = this.head;
+            this.head = newNode;
         } else {
             currentNode = this.head;
             while (true) {
