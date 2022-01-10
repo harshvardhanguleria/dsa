@@ -50,7 +50,6 @@ class DLL {
     public void insertPosition(Node newNode, int position) {
         int count = 0;
         Node currentNode = null;
-        Node previousNode = null;
         if (this.head == null)
             this.head = newNode;
         else if (position == 0) {
@@ -58,16 +57,13 @@ class DLL {
             this.head = newNode;
         } else {
             currentNode = this.head;
-            while (true) {
-                if (count == position) {
-                    previousNode.next = newNode;
-                    newNode.next = currentNode;
-                    break;
-                }
-                previousNode = currentNode;
+            while (count < position) {
                 currentNode = currentNode.next;
                 count = count + 1;
             }
+            newNode.next = currentNode.next;
+            newNode.prev = currentNode;
+            currentNode.next = newNode;
         }
     }
 
@@ -83,6 +79,38 @@ class DLL {
             lastNode = lastNode.next;
         System.out.println("\nDeleted "+ lastNode.data);
         lastNode.next = null;
+    }
+
+    // Deleting a node from the start of the list
+    public void deleteStart() {
+        Node firstNode;
+        Node secondNode;
+        if (this.head == null) {
+            System.out.println("\nThe list is empty.");
+            return;
+        }
+        firstNode = this.head;
+        secondNode = firstNode.next;
+        secondNode.prev = null;
+        this.head = secondNode;
+        firstNode = null;
+    }
+
+    // Deleting a node from a specific position from the list
+    public void deletePosition(int position) {
+        Node positionNode;
+        int count = 0;
+        if (this.head == null) {
+            System.out.println("\nThe list is empty.");
+            return;
+        }
+        positionNode = this.head;
+        while (count < position) {
+            positionNode = positionNode.next;
+            count = count + 1;
+        }
+        positionNode.prev.next = positionNode.next;
+        positionNode = null;
     }
 }
 
