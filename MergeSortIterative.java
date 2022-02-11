@@ -2,9 +2,9 @@ import java.util.Arrays;
 
 public class MergeSortIterative {
 
-    private static int op = 0;
+    private static int[] op = {0, 0, 0};
 
-    private static void mergeSort(int[] list) {
+    private static void mergeSort(int[] list, int op) {
         if (list == null)
             return;
         if (list.length > 1) {
@@ -22,8 +22,8 @@ public class MergeSortIterative {
                 op++;
             }
             
-            mergeSort(left);
-            mergeSort(right);
+            mergeSort(left, op);
+            mergeSort(right, op);
 
             int i = 0, j = 0, k = 0;
 
@@ -62,15 +62,16 @@ public class MergeSortIterative {
             {10,9,8,7,6,5,4,3,2,1},
             {100,105,110,120,125}
         };
+        int a = 0;
         System.out.println("\nOriginal arrays\n");
         for (int[] i : iterativeInput)
             System.out.println(Arrays.toString(i));
 
         System.out.println("\nIterative approach\n");
         for (int[] i : iterativeInput)
-            mergeSort(i);
+            mergeSort(i, op[a++]);
         for (int[] i : iterativeInput)
             System.out.println(Arrays.toString(i));
-        System.out.println("\nTotal number of operations: "+ op);
+        System.out.println("\nTotal number of operations: "+ Arrays.toString(op));
     }
 }
