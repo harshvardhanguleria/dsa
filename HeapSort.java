@@ -3,10 +3,10 @@ import java.util.Arrays;
 public class HeapSort
 {
     
-    private static void swap(int i, int j) {
-        int temp = i; 
-        i = j; 
-        j = temp;
+    private static void swap(int array[], int i, int j) {
+        int temp = array[i]; 
+        array[i] = array[j]; 
+        array[j] = temp;
     }
     
     private static void sort(int array[]) {
@@ -14,7 +14,7 @@ public class HeapSort
         for (int i = n/2 - 1; i >= 0; i--)
             heapify(array, n, i);
         for (int i = n - 1; i >= 0; i--) {
-            swap(array[0], array[i]);
+            swap(array, 0, i);
             heapify(array, i, 0);
         }
     }
@@ -28,12 +28,13 @@ public class HeapSort
         if (right < n && array[right] > array[largest])
             largest = right;
         if (largest != i) {
-            swap(array[i], array[largest]);
+            swap(array, i, largest);
             heapify(array, n, largest);
         }
     }
     
 	public static void main(String[] args) {
+        HeapSort hs = new HeapSort();
 		int[][] input = {
             {30,25,16,80,85,2},
             {10,9,8,7,6,5,4,3,2,1},
@@ -43,7 +44,7 @@ public class HeapSort
         for (int[] i : input)
             System.out.println(Arrays.toString(i));
         for (int[] i : input) 
-            sort(i);
+            hs.sort(i);
         System.out.println("\nThe sorted arrays are:"); 
         for (int[] i : input)
             System.out.println(Arrays.toString(i)); 
