@@ -19,11 +19,13 @@ class Node {
 
 class Tree {
 
-    private static Node root;
+    private Node root;
 
     Tree() {
         this.root = null;
     }
+
+    public Node getRoot() { return this.root; }
 
     private static Node insert(Node current, char data) {
         
@@ -39,34 +41,11 @@ class Tree {
         return current;
     }
 
-    public static void add(char data) {
+    public void add(char data) {
         root = insert(root, data);
     }
 
-    public static Tree createTree() {
-        Tree t = new Tree();
-
-        Scanner sc = new Scanner(System.in);
-        char input;
-        char ch;
-
-        do {    
-            System.out.print("\nEnter the element: ");
-            input = sc.next().charAt(0);
-            t.add(input);
-            System.out.print("\nDo you want to continue(y/n): ");
-            ch = sc.next().charAt(0);
-
-        } while(ch == 'y' || ch == 'Y');
-
-        sc.close();
-        System.out.print("\nThe tree is ");
-        inorderTraversal(t.root);
-
-        return t;
-    }
-
-    public static void inorderTraversal(Node node) {
+    public void inorderTraversal(Node node) {
         if (node != null) {
             inorderTraversal(node.left);
             System.out.print(" "+ node.data);
@@ -74,7 +53,7 @@ class Tree {
         }
     }
 
-    public static void BFS(char element) {
+    public void BFS(char element) {
         if (root == null)
             return;
         
@@ -86,13 +65,13 @@ class Tree {
         while(!nodes.isEmpty()) {
             Node node = nodes.remove();
 
-            if (node.data == element)
+            if (node.data == element) {
+                flag = 0;
                 break;
+            }
 
             if (node.data != element)
                 flag = -1;
-            else 
-                flag = 0;
 
             list.add(node.data);
 
@@ -110,7 +89,7 @@ class Tree {
                                 list +".");
     }
 
-    public static void DFSInorder(char element) {
+    public void DFSInorder(char element) {
         if (root == null) 
             return;
         
@@ -121,8 +100,10 @@ class Tree {
 
         while (current != null || s.size() > 0) {
 
-            if (element == current.data)
+            if (element == current.data) {
+                flag = 0;
                 break;
+            }
             
             if (element != current.data)
                 flag = -1;
@@ -149,23 +130,38 @@ class Tree {
     }
 }
 
-public class BFS {
+public class BFS_DFS {
 
     public static void main(String[] args) {
 
         Tree tree = new Tree();
         Scanner sc = new Scanner(System.in);
+        char input, element;
+        boolean exit = false;
 
-        tree = tree.createTree();
+        System.out.println("\nEnter '-' to stop entering elements.");
+        while (!exit) {    
+            System.out.print("\nEnter the element: ");
+            input = sc.next().charAt(0);
+            
+            if (input == '-')
+                exit = true;
+
+            tree.add(input);
+        }
+
+        System.out.print("\nThe tree is ");
+        tree.inorderTraversal(tree.getRoot());
 
         System.out.print("\nEnter the element to be searched: ");
-        char input = sc.next().charAt(0);
+        element = sc.next().charAt(0);
+        sc.close();
 
         System.out.println("\nBreadth First Search Output");
-        tree.BFS(input);
+        tree.BFS(element);
 
         System.out.println("\nDepth First Search Inorder Output");
-        tree.DFSInorder(input);
+        tree.DFSInorder(element);
 
     }
 }
