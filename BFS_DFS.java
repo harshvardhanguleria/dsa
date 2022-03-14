@@ -137,23 +137,23 @@ public class BFS_DFS {
         Tree tree = new Tree();
         Scanner sc = new Scanner(System.in);
         char input, element;
-        boolean exit = false;
 
         System.out.println("\nEnter '-' to stop entering elements.");
-        while (!exit) {    
+
+        while (true) {    
             System.out.print("\nEnter the element: ");
             input = sc.next().charAt(0);
             
             if (input == '-')
-                exit = true;
+                break;
 
             tree.add(input);
         }
 
-        System.out.print("\nThe tree is ");
+        System.out.print("\nThe tree when traversed in inorder fashion is");
         tree.inorderTraversal(tree.getRoot());
 
-        System.out.print("\nEnter the element to be searched: ");
+        System.out.print("\n\nEnter the element to be searched: ");
         element = sc.next().charAt(0);
         sc.close();
 
