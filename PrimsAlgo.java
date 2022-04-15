@@ -4,6 +4,7 @@ import java.util.TreeSet;
 import java.util.Comparator;
 
 public class PrimsAlgo {
+    
     class Node1 {
  
         // Stores destination vertex in adjacency list
@@ -19,6 +20,7 @@ public class PrimsAlgo {
             weight = b;
         }
     }
+
     static class Graph {
  
         // Number of vertices in the graph
