@@ -2,9 +2,7 @@ import java.util.Scanner;
 import java.util.PriorityQueue;
 import java.util.List;
 import java.util.Set;
-
-import javax.print.attribute.standard.DialogTypeSelection;
-
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 
@@ -43,7 +41,7 @@ public class Dijkstra {
         pq = new PriorityQueue<Node>(v, new Node());
     }
 
-    public void dijkstra(List<List<Node>> adj, int src) {
+    public void dijkstraAlgo(List<List<Node>> adj, int src) {
         this.adj = adj;
 
         for (int i = 0; i < vertices; ++i)
@@ -95,6 +93,67 @@ public class Dijkstra {
     }
 
     public static void main(String[] args) {
-        
+        /*
+        int v = 5;
+        int source = 0;
+        List<List<Node>> adj = new ArrayList<List<Node>>();
+
+        for (int i = 0; i < v; ++i) {
+            List<Node> item = new ArrayList<Node>();
+            adj.add(item);
+        }
+
+        adj.get(0).add(new Node(1, 9));
+        adj.get(0).add(new Node(2, 6));
+        adj.get(0).add(new Node(3, 5));
+        adj.get(0).add(new Node(4, 3));
+
+        adj.get(2).add(new Node(1, 2));
+        adj.get(2).add(new Node(3, 4));
+        */
+
+        Scanner sc = new Scanner(System.in);
+        int v, source, destination, cost, sourceShortestPath;
+        List<List<Node>> adj = new ArrayList<List<Node>>();
+
+        System.out.print("\nEnter number of vertices: ");
+        v = sc.nextInt();
+
+        for (int i = 0; i < v; ++i) {
+            List<Node> item = new ArrayList<Node>();
+            adj.add(item);
+        }
+
+        System.out.println("\nEnter source, destination and cost");
+        while (true) {
+            System.out.println("\nEnter -1 to stop");
+            System.out.print("Source: ");
+            source = sc.nextInt();
+
+            if (source == -1)
+                break;
+            
+            System.out.print("Destination: ");
+            destination = sc.nextInt();
+            System.out.print("Cost: ");
+            cost = sc.nextInt();
+
+            adj.get(source).add(new Node(destination, cost));
+        }
+
+        System.out.print("\nEnter the source to find the shortest path: ");
+        sourceShortestPath = sc.nextInt();
+
+        sc.close();
+
+        Dijkstra dpq = new Dijkstra(v);
+        dpq.dijkstraAlgo(adj, sourceShortestPath);
+
+        // Printing the shortest path to all nodes from the source node
+        System.out.println("\nThe shortest path from node: ");
+
+        for (int i = 0; i < dpq.distance.length; ++i)
+            System.out.println(sourceShortestPath +" to "+ i +" is "+
+                                dpq.distance[i]);
     }
 }
