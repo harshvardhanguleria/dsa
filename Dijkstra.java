@@ -93,24 +93,6 @@ public class Dijkstra {
     }
 
     public static void main(String[] args) {
-        /*
-        int v = 5;
-        int source = 0;
-        List<List<Node>> adj = new ArrayList<List<Node>>();
-
-        for (int i = 0; i < v; ++i) {
-            List<Node> item = new ArrayList<Node>();
-            adj.add(item);
-        }
-
-        adj.get(0).add(new Node(1, 9));
-        adj.get(0).add(new Node(2, 6));
-        adj.get(0).add(new Node(3, 5));
-        adj.get(0).add(new Node(4, 3));
-
-        adj.get(2).add(new Node(1, 2));
-        adj.get(2).add(new Node(3, 4));
-        */
 
         Scanner sc = new Scanner(System.in);
         int v, source, destination, cost, sourceShortestPath;
@@ -155,5 +137,25 @@ public class Dijkstra {
         for (int i = 0; i < dpq.distance.length; ++i)
             System.out.println(sourceShortestPath +" to "+ i +" is "+
                                 dpq.distance[i]);
+
+        
+        /*
+        int v = 5;
+        int source = 0;
+        List<List<Node>> adj = new ArrayList<List<Node>>();
+
+        for (int i = 0; i < v; ++i) {
+            List<Node> item = new ArrayList<Node>();
+            adj.add(item);
+        }
+
+        adj.get(0).add(new Node(1, 9));
+        adj.get(0).add(new Node(2, 6));
+        adj.get(0).add(new Node(3, 5));
+        adj.get(0).add(new Node(4, 3));
+
+        adj.get(2).add(new Node(1, 2));
+        adj.get(2).add(new Node(3, 4));
+        */
     }
 }
