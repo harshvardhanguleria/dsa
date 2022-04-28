@@ -64,7 +64,6 @@ public class PrimsAlgo {
     // between two vertices
     void addEdge(Graph graph, int src, int dest, int weight)
     {
- 
         Node1 node0 = new Node1(dest, weight);
         Node1 node = new Node1(src, weight);
         graph.adj[src].addLast(node0);

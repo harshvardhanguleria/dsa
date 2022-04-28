@@ -94,13 +94,16 @@ public class Kruskal {
 
         public void printGraph(ArrayList<Edge> edgeList) {
             System.out.println("Edge  Source  Destination  Weight");
+            int totalCost = 0;
             for (int i = 0; i < edgeList.size(); ++i) {
                 Edge edge = edgeList.get(i);
                 System.out.println("  "+ i +" -> \t"+
                                     edge.source +"\t   "+
                                     edge.destination +"\t     "+
                                     edge.weight);
+                totalCost = totalCost + edge.weight;
             }
+            System.out.println("\nThe total cost = "+ totalCost);
         }
     }
 
