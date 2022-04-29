@@ -37,7 +37,7 @@ public class Kruskal {
             );
 
             // add all the edges to the priority queue
-            // sort the edgeson weights
+            // sort the edges on weights
             for (int i = 0; i < allEdges.size(); ++i)
                 pq.add(allEdges.get(i));
 
