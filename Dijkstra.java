@@ -132,7 +132,7 @@ public class Dijkstra {
         dpq.dijkstraAlgo(adj, sourceShortestPath);
 
         // Printing the shortest path to all nodes from the source node
-        System.out.println("\nThe shortest path from node: ");
+        System.out.println("\nThe total cost of the shortest path from node: ");
 
         for (int i = 0; i < dpq.distance.length; ++i)
             System.out.println(sourceShortestPath +" to "+ i +" is "+
@@ -140,22 +140,16 @@ public class Dijkstra {
 
         
         /*
-        int v = 5;
-        int source = 0;
-        List<List<Node>> adj = new ArrayList<List<Node>>();
+        v = 5
+        source = 0
 
-        for (int i = 0; i < v; ++i) {
-            List<Node> item = new ArrayList<Node>();
-            adj.add(item);
-        }
+        0, 1, 9
+        0, 2, 6
+        0, 3, 5
+        0, 4, 3
 
-        adj.get(0).add(new Node(1, 9));
-        adj.get(0).add(new Node(2, 6));
-        adj.get(0).add(new Node(3, 5));
-        adj.get(0).add(new Node(4, 3));
-
-        adj.get(2).add(new Node(1, 2));
-        adj.get(2).add(new Node(3, 4));
+        2, 1, 2
+        2, 3, 4
         */
     }
 }

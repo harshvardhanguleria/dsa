@@ -73,6 +73,7 @@ public class PrimsAlgo {
     // method used to find the mst
     void prims_mst(Graph graph)
     {
+        int totalCost = 0;
  
         // Whether a vertex is in PriorityQueue or not
         Boolean[] mstset = new Boolean[graph.V];
@@ -103,7 +104,6 @@ public class PrimsAlgo {
         // out of PriorityQueue
         e[0].key = 0;
  
-        // Use TreeSet instead of PriorityQueue as the remove function of the PQ is O(n) in java.
         TreeSet<Node> queue = new TreeSet<Node>(new comparator());
  
         for (int o = 0; o < graph.V; o++)
@@ -132,6 +132,7 @@ public class PrimsAlgo {
                         e[iterator.dest].key = iterator.weight;
                         queue.add(e[iterator.dest]);
                         parent[iterator.dest] = node0.vertex;
+                        totalCost = totalCost + iterator.weight;
                     }
                 }
             }
@@ -142,34 +143,30 @@ public class PrimsAlgo {
             System.out.println(parent[o] + " "
                                + "-"
                                + " " + o);
+        
+        System.out.println("\nThe total cost = "+ totalCost);
     }
  
     public static void main(String[] args)
     {
         /*
-        int V = 9;
+        V = 9
  
-        Graph graph = new Graph(V);
- 
-        PrimsAlgo e = new PrimsAlgo();
- 
-        e.addEdge(graph, 0, 1, 4);
-        e.addEdge(graph, 0, 7, 8);
-        e.addEdge(graph, 1, 2, 8);
-        e.addEdge(graph, 1, 7, 11);
-        e.addEdge(graph, 2, 3, 7);
-        e.addEdge(graph, 2, 8, 2);
-        e.addEdge(graph, 2, 5, 4);
-        e.addEdge(graph, 3, 4, 9);
-        e.addEdge(graph, 3, 5, 14);
-        e.addEdge(graph, 4, 5, 10);
-        e.addEdge(graph, 5, 6, 2);
-        e.addEdge(graph, 6, 7, 1);
-        e.addEdge(graph, 6, 8, 6);
-        e.addEdge(graph, 7, 8, 7);
- 
-        // Method invoked
-        e.prims_mst(graph);
+         0, 1, 4
+         0, 7, 8
+         1, 2, 8
+         1, 7, 11
+         2, 3, 7
+         2, 8, 2
+         2, 5, 4
+         3, 4, 9
+         3, 5, 14
+         4, 5, 10
+         5, 6, 2
+         6, 7, 1
+         6, 8, 6
+         7, 8, 7
+
         */
 
         Scanner sc = new Scanner(System.in);
