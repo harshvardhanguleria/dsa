@@ -94,20 +94,20 @@ public class BFS_Graph {
         graph.BFS(nodeToSearchFor);
 
         /*
-        graph.insertEdge(0, 1);  
-        graph.insertEdge(0, 3);  
-        graph.insertEdge(0, 4);  
-        graph.insertEdge(4, 5);  
-        graph.insertEdge(3, 5);  
-        graph.insertEdge(1, 2);  
-        graph.insertEdge(1, 0);  
-        graph.insertEdge(2, 1);  
-        graph.insertEdge(4, 1);  
-        graph.insertEdge(3, 1);  
-        graph.insertEdge(5, 4);  
-        graph.insertEdge(5, 3);  
+        0, 1  
+        0, 3 
+        0, 4 
+        4, 5 
+        3, 5  
+        1, 2 
+        1, 0 
+        2, 1 
+        4, 1  
+        3, 1  
+        5, 4 
+        5, 3  
 
-        graph.BFS(0);
+        start node = 0
 
         0 1 3 4 2 5
         */

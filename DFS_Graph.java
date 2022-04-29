@@ -70,18 +70,18 @@ public class DFS_Graph {
         graph.DFS(nodeToSearchFor);
 
         /*
-        graph.insertEdge(0, 1);    
-        graph.insertEdge(0, 2);    
-        graph.insertEdge(0, 3);    
-        graph.insertEdge(1, 3);    
-        graph.insertEdge(2, 4);  
-        graph.insertEdge(3, 5);       
-        graph.insertEdge(3, 6);    
-        graph.insertEdge(4, 7);    
-        graph.insertEdge(4, 5);    
-        graph.insertEdge(5, 2); 
+        0, 1
+        0, 2 
+        0, 3    
+        1, 3  
+        2, 4
+        3, 5      
+        3, 6    
+        4, 7   
+        4, 5    
+        5, 2 
 
-        graph.DFS(0);
+        start node = 0
 
         0 1 3 5 2 4 7 6
         */
